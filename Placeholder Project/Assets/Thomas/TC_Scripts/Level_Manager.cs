@@ -36,7 +36,7 @@ public class Level_Manager : MonoBehaviour
     void UpdateGUI()
     {
         //update the game stats panel text
-        text_stats.text =  "Starlight remaining: " + in_collectables.ToString();
+        text_stats.text =  "STARLIGHT REMAINING: " + in_collectables.ToString();
     }//-----
 
 }//==========
