@@ -1,6 +1,6 @@
 ﻿// ----------------------------------------------------------------------
-// -------------------- 3D NPC Waypoint Patrol 
-// -------------------- David Dorrington, UEL Games, 2017
+// -------------------- 3D NPC Waypoint Guidance 
+// -------------------- Thomas Cookman, UEL Games student, 2020
 // ----------------------------------------------------------------------
 
 using System.Collections;
@@ -9,17 +9,17 @@ using UnityEngine;
 
 public class DD_NPC_Patrol : MonoBehaviour
 {
+    //----------------------------------------------------------------------
+    public enum en_states { Idle, Patrol };
+    public en_states NPC_state = en_states.Idle;
+    private Transform tx_target;
+    private UnityEngine.AI.NavMeshAgent nm_agent;
 
     // ----------------------------------------------------------------------
-    // Combat Variables
-    public GameObject GO_projectile;
-    public float fl_range = 15;
-    public float fl_cool_down = 1;
-    private float fl_next_shot_time;   
-
     // Movement
     public GameObject[] GOS_waypoints;
     public float fl_speed = 3;
+    public float fl_range = 15;
     private int in_next_wp = 0;
 
     public GameObject GO_target;
@@ -39,15 +39,31 @@ public class DD_NPC_Patrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // SwitchStates();
+
         if (Vector3.Distance(transform.position, GO_target.transform.position) < fl_range)
         {
-            AttackTarget();
+           Patrol();
         }
         else
         {
-            Patrol();
+           Idle();
         }
     }//-----
+
+   // private void SwitchStates()
+   // {
+   //     switch (NPC_state)
+   //     {
+   //         case en_states.Idle:
+   //             Idle();
+   //             break;
+   //         case en_states.Patrol:
+   //             Patrol();
+   //            break;
+   //     }
+   // }//* 
+    //-----
 
     // ----------------------------------------------------------------------
     void Patrol()
@@ -71,22 +87,15 @@ public class DD_NPC_Patrol : MonoBehaviour
         }
     }//-----
 
+    // ----------------------------------------------------------------------
+    void Idle()
+    {
+        if (Vector3.Distance(transform.position, tx_target.position) < fl_range)
+            NPC_state = en_states.Patrol;
+
+    }//-----
 
     // ----------------------------------------------------------------------
-    void AttackTarget()
-    {
-        // Does the NPC have ammo and has the cooldown passed
-        if (Time.time > fl_next_shot_time)
-        {
-            // Face the Target
-            transform.LookAt(GO_target.transform.position);
-            CC_NPC.SimpleMove(Vector3.zero);
 
-            // Spawn a projectile   
-            Instantiate(GO_projectile, transform.position + transform.TransformDirection(new Vector3(0, 0, 1F)), transform.rotation);
-
-            fl_next_shot_time = Time.time + fl_cool_down;
-        }
-    }//------
 
 }//==========

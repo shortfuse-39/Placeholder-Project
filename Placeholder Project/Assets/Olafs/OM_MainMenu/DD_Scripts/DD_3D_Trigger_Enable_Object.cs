@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿//-------------------------------------------------------------------------
+// Enabling or Disbale object on Trigger
+// David Dorrington, UELGames 2019
+//-------------------------------------------------------------------------
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +13,6 @@ public class DD_3D_Trigger_Enable_Object : MonoBehaviour {
     public GameObject go_target;
     public GameObject go_activator;
     public bool bl_destroy_trigger_when_activated;
-    public bool bl_destroy_activator_when_activated;
     public float fl_delay;
     public bool bl_enable;
     private float fl_time;
@@ -21,6 +24,10 @@ public class DD_3D_Trigger_Enable_Object : MonoBehaviour {
     {
         // Set the Target object to Disabled if we are to enable it on the trigger 
         if (bl_enable) go_target.SetActive(false);
+
+        //  if no activator is defined use the PC
+        if (!go_activator) go_activator = GameObject.FindWithTag("Player");
+
     }//-----
 
     // ----------------------------------------------------------------------
@@ -35,12 +42,8 @@ public class DD_3D_Trigger_Enable_Object : MonoBehaviour {
             else
                 go_target.SetActive(false);
 
-            //Destroy activator when complete 
-            if (bl_destroy_activator_when_activated) Destroy(go_activator);
-
             //Destroy this object when complete 
             if (bl_destroy_trigger_when_activated) Destroy(gameObject);
-
         }
     }//-----  
 
@@ -59,7 +62,5 @@ public class DD_3D_Trigger_Enable_Object : MonoBehaviour {
         }
     }//-----
 
-    //-------------------------------------------------------------------------
-    // Enabling or Disbale object on Trigger
-    // David Dorrington, UELGames 2019
+   
 }//================
