@@ -21,23 +21,23 @@ public class Movement_Inertia : MonoBehaviour
         if (Input.GetKey("w"))
         {
             rigidBody.velocity += transform.TransformDirection(Vector3.forward) * Time.deltaTime * MovementSpeed;
-            Debug.Log("Forward!");
+            // Debug.Log("Forward!");
         }
         else if (Input.GetKey("s"))
         {
             rigidBody.velocity -= transform.TransformDirection(Vector3.forward) * Time.deltaTime * MovementSpeed;
-            Debug.Log("Back!");
+            // Debug.Log("Back!");
         }
 
         if (Input.GetKey("a") && !Input.GetKey("d"))
         {
             rigidBody.velocity += transform.TransformDirection(Vector3.left) * Time.deltaTime * MovementSpeed;
-            Debug.Log("Right!");
+            // Debug.Log("Right!");
         }
         else if (Input.GetKey("d") && !Input.GetKey("a"))
         {
             rigidBody.velocity -= transform.TransformDirection(Vector3.left) * Time.deltaTime * MovementSpeed;
-            Debug.Log("Left!");
+            // Debug.Log("Left!");
         }
 
         {

@@ -7,13 +7,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DD_NPC_Patrol : MonoBehaviour
+public class TC_NPC_Patrol : MonoBehaviour
 {
     //----------------------------------------------------------------------
     public enum en_states { Idle, Patrol };
     public en_states NPC_state = en_states.Idle;
-    private Transform tx_target;
-    private UnityEngine.AI.NavMeshAgent nm_agent;
+    // private Transform tx_target;
+    // private UnityEngine.AI.NavMeshAgent nm_agent;
 
     // ----------------------------------------------------------------------
     // Movement
@@ -41,28 +41,32 @@ public class DD_NPC_Patrol : MonoBehaviour
     {
         // SwitchStates();
 
-        if (Vector3.Distance(transform.position, GO_target.transform.position) < fl_range)
+      if (Vector3.Distance(transform.position, GO_target.transform.position) < fl_range)
         {
            Patrol();
+            Debug.Log("Patrolling!");
+
         }
         else
         {
            Idle();
+            Debug.Log("Idling!");
+
         }
     }//-----
 
-   // private void SwitchStates()
-   // {
-   //     switch (NPC_state)
-   //     {
-   //         case en_states.Idle:
-   //             Idle();
-   //             break;
-   //         case en_states.Patrol:
-   //             Patrol();
-   //            break;
-   //     }
-   // }//* 
+/* private void SwitchStates()
+   {
+    switch (NPC_state)
+       {
+       case en_states.Idle:
+            Idle();
+            break;
+       case en_states.Patrol:
+            Patrol();
+            break;
+       }
+   } */
     //-----
 
     // ----------------------------------------------------------------------
@@ -90,7 +94,7 @@ public class DD_NPC_Patrol : MonoBehaviour
     // ----------------------------------------------------------------------
     void Idle()
     {
-        if (Vector3.Distance(transform.position, tx_target.position) < fl_range)
+        if (Vector3.Distance(transform.position, GO_target.transform.position) < fl_range)
             NPC_state = en_states.Patrol;
 
     }//-----
