@@ -22,7 +22,7 @@ public class DD_3D_Message : MonoBehaviour
     {
         go_Player = GameObject.FindWithTag("Player");
         go_panel = GameObject.Find("LevelManager").transform.Find("MessagePanel").gameObject;
-       // txt_window = go_panel.transform.Find("MessageText").GetComponent<Text>();
+        // txt_window = go_panel.transform.Find("MessageText").GetComponent<Text>();
 
     }//-----
 
@@ -31,11 +31,11 @@ public class DD_3D_Message : MonoBehaviour
     void Update()
     {
         // Is the PC in trigger distance
-        if (Vector3.Distance(go_Player.transform.position, transform.position) < fl_distance)
+         if (Vector3.Distance(go_Player.transform.position, transform.position) < fl_distance)
         {
             // Enable the message panel active
             if (!go_panel.activeInHierarchy) go_panel.SetActive(true);
-            
+
             // Step through the messages if there are more than 1
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -45,14 +45,15 @@ public class DD_3D_Message : MonoBehaviour
 
             // update the text box
             // txt_window.text = st_message[in_message_stage];
-        }
-        else if (go_Player && Vector3.Distance(go_Player.transform.position, transform.position) < fl_distance + 1)
-        {
-            go_panel.SetActive(false);
-            Destroy(gameObject);
-        }
-    }
+             }
+            else if (go_Player && Vector3.Distance(go_Player.transform.position, transform.position) < fl_distance + 1)
+            {
+                go_panel.SetActive(false);
+                Destroy(gameObject);
+            }
+        
 
-    //-----
+        //-----
 
-}//==========
+    }//==========
+}

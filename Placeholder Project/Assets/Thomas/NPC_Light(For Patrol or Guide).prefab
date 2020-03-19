@@ -865,9 +865,8 @@ GameObject:
   - component: {fileID: 1107391258048539975}
   - component: {fileID: 1107391258048539972}
   - component: {fileID: 1107391258048539973}
-  - component: {fileID: 1107391258048539978}
   m_Layer: 0
-  m_Name: NPC_Light
+  m_Name: NPC_Light(For Patrol or Guide)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -922,25 +921,3 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.00001
   m_Center: {x: -0.2, y: 0.25, z: 0}
---- !u!114 &1107391258048539978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1107391258048539979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfe353b12e4359b46ae98dea7aff4d78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NPC_state: 0
-  GOS_waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  fl_speed: 3
-  fl_range: 10
-  GO_target: {fileID: 0}

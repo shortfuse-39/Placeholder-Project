@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+
 public class AudioSettings : MonoBehaviour
 
 {
+
+
     public class SetVolume : MonoBehaviour
     {
         public AudioMixer mixer;
@@ -19,8 +22,9 @@ public class AudioSettings : MonoBehaviour
         public void SetLevel()
         {
             float sliderValue = slider.value;
-            mixer.SetFloat("Volume", Mathf.Log10(sliderValue) * 20);
+            mixer.SetFloat("MusicVol", Mathf.Log10(sliderValue) * 20);
             PlayerPrefs.SetFloat("MusicVolume", sliderValue);
         }
+
     }
 }
