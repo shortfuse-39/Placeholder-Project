@@ -44,18 +44,18 @@ public class TC_NPC_Patrol : MonoBehaviour
       if (Vector3.Distance(transform.position, GO_target.transform.position) < fl_range)
         {
            Patrol();
-            Debug.Log("Patrolling!");
+           // Debug.Log("Patrolling!");
 
         }
         else
         {
            Idle();
-            Debug.Log("Idling!");
+           // Debug.Log("Idling!");
 
         }
     }//-----
 
-/* private void SwitchStates()
+ /* private void SwitchStates()
    {
     switch (NPC_state)
        {
